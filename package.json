@@ -20,6 +20,8 @@
     "near-cli": "^3.3.0"
   },
   "dependencies": {
-    "react-scripts": "^5.0.1"
+    "parcel": "^2.8.1",
+    "react-scripts": "^5.0.1",
+    "ts-morph": "^17.0.1"
   }
 }
