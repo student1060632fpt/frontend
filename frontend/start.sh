@@ -5,7 +5,10 @@ DEV_ACCOUNT_FILE="${CONTRACT_DIRECTORY}/neardev/dev-account.env"
 
 start () {
   echo The app is starting!
-  CONTRACT_NAME=bkhcm.vbidev.testnet parcel index.html --open
+  OWNER_ID=thanhdevtest.testnet parcel index.html --open
+  # VOTING-CONTRACT_ID=
+  # STAKING-CONTRACT_ID=
+  # VE_FT_CONTRACT_ID=
 }
 
 alert () {

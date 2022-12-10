@@ -15,3 +15,11 @@ export PATH=$PATH:/mnt/c/Windows/System32
 `
 chmod +x ./stash.sh
 `
+
+# nếu bị conflict version
+```
+--legacy-peer-deps
+```
+
+- permission denied lần nữa
+thêm `sudo` ở đầu câu lệnh

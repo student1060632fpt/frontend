@@ -6,22 +6,23 @@ import { async } from "regenerator-runtime";
 import ModalSale from "../components/ModalSale";
 const { Meta } = Card;
 
-export default function MyNFT({isSignedIn, nftMarketplace, wallet}) {
+export default function Staking({isSignedIn, contract_id, wallet}) {
     const [nfts, setNfts] = useState([]);
     const [mintVisible, setMintVisible] = useState(false);
     const [saleVisible, setSaleVisible] = useState(false);
     const [currentItem, setCurrentItem] = useState(null);
 
     async function fetchNfts() {
-        let data = await wallet.viewMethod({
-            contractId: process.env.CONTRACT_NAME,
-            method: "nft_tokens_for_owner",
-            args: {
-                account_id: wallet.accountId,
-                from_index: "0",
-                limit: 100
-            }
-        });
+        // let data = await wallet.viewMethod({
+        //     contractId: process.env.CONTRACT_NAME,
+        //     method: "nft_tokens_for_owner",
+        //     args: {
+        //         account_id: wallet.accountId,
+        //         from_index: "0",
+        //         limit: 100
+        //     }
+        // });
+        let data = await contract_id.get("nftMarketplace").nftTokenForOwner(wallet.accountId, "0")
         setNfts(data);
         console.log("NFTs: ", data);
     }
@@ -32,7 +33,7 @@ export default function MyNFT({isSignedIn, nftMarketplace, wallet}) {
     }
 
     async function submitOnMint({tokenId, tokenTitle, description, media}) {
-        await nftMarketplace.mintNFT(
+        await contract_id.get("nftMarketplace").mintNFT(
             tokenId,
             {
                 title: tokenTitle,
@@ -44,7 +45,7 @@ export default function MyNFT({isSignedIn, nftMarketplace, wallet}) {
     }
 
     async function submitOnSale(token, price) {
-        await nftMarketplace.addSale(
+        await contract_id.get("nftMarketplace").addSale(
             currentItem.token_id,
             price
         )
