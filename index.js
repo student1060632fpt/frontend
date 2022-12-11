@@ -1,11 +1,13 @@
 // React
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { FungibleToken, NFTMarketplace, veFungibleToken, VotingContract, FaucetContract } from './near-interface';
 
 import { Wallet } from './near-wallet';
+import { store } from './redux/store';
 
 // When creating the wallet you can optionally ask to create an access key
 // Having the key enables to call non-payable methods without interrupting the user to sign
@@ -33,9 +35,11 @@ window.onload = async () => {
   const isSignedIn = await wallet.startUp()
  
   ReactDOM.render(
+   <Provider store={store}>
     <BrowserRouter>
       <App isSignedIn={isSignedIn} contract_id={contract_id} wallet={wallet} />
-    </BrowserRouter>,
+    </BrowserRouter>
+   </Provider>,
     document.getElementById('root')
   );
 }

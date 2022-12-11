@@ -31,3 +31,4 @@ yarn-debug.log*
 yarn-error.log*
 /frontend/.parcel-cache/
 /.parcel-cache/
+package-lock.json

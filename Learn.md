@@ -23,3 +23,6 @@ chmod +x ./stash.sh
 
 - permission denied lần nữa
 thêm `sudo` ở đầu câu lệnh
+
+# Error: Got unexpected null
+xóa .parcel-cache 
