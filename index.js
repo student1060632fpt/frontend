@@ -21,13 +21,11 @@ const votingContractId = new VotingContract({contractId: "voting-test8.thanhdevt
 
 const faucetContractId = new FaucetContract({contractId: "faucet-test1.thanhdevtest.testnet", wallet});
 
-const nftMarketplace = new NFTMarketplace({contractId: "bkhcm.vbidev.testnet", wallet});
 
 
 const contract_id = new Map();
 contract_id.set("ftContractId",ftContractId);
 contract_id.set("stakingContractId",stakingContractId);
-contract_id.set("nftMarketplace",nftMarketplace);
 contract_id.set("votingContractId",votingContractId);
 contract_id.set("faucetContractId",faucetContractId);
 // Setup on page load
