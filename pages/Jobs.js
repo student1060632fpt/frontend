@@ -25,8 +25,16 @@ export default function Jobs({ isSignedIn, contract_id, wallet }) {
         console.log("Sales: ", data);
     }
 
-    async function submitOnCreate({tokenTitle, description, media, budge}) {
-        await contract_id.get("ftContractId").ft_transfer_call("staking-test12.thanhdevtest.testnet", budget.toString(), "up jobs");
+    async function submitOnCreate({jobsId, tokenTitle, description, media, budget}) {
+        const dataInput = {
+            purpose: "up jobs",
+            para: jobsId.toString()
+        };
+        const stringData = JSON.stringify(dataInput);
+        console.log("stringData ", stringData);
+        const rp = stringData.replace(/["]+/g, '\"');
+        console.log("rp: ", rp);
+        await contract_id.get("ftContractId").ft_transfer_call("staking-test16.thanhdevtest.testnet", budget.toString(), rp);
 
         //post be/
     }
